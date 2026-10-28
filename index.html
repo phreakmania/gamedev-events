@@ -29,9 +29,20 @@
   </header>
 
   <main>
+    <section class="calendar-section" aria-labelledby="calendar-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Auf einen Blick</p>
+          <h2 id="calendar-title">Die nächsten drei Monate</h2>
+        </div>
+        <p class="calendar-legend"><span aria-hidden="true"></span> Eventtag</p>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
+    </section>
+
     <section aria-labelledby="upcoming-title">
       <div class="section-heading">
-        <h2 id="upcoming-title">Kommende Termine</h2>
+        <h2 id="upcoming-title">Termine</h2>
         <p id="result-count"></p>
       </div>
       <div id="events" class="event-grid" aria-live="polite"></div>
@@ -74,12 +85,17 @@
       updated: document.querySelector("#updated"),
       count: document.querySelector("#result-count"),
       empty: document.querySelector("#empty-state"),
+      calendar: document.querySelector("#calendar"),
       template: document.querySelector("#event-template")
     };
 
-    const dateFmt = new Intl.DateTimeFormat("de-DE", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
-    const timeFmt = new Intl.DateTimeFormat("de-DE", { hour: "2-digit", minute: "2-digit" });
-    const monthFmt = new Intl.DateTimeFormat("de-DE", { month: "short" });
+    const berlinTimeZone = "Europe/Berlin";
+    const dateFmt = new Intl.DateTimeFormat("de-DE", { timeZone: berlinTimeZone, weekday: "long", day: "2-digit", month: "long", year: "numeric" });
+    const timeFmt = new Intl.DateTimeFormat("de-DE", { timeZone: berlinTimeZone, hour: "2-digit", minute: "2-digit" });
+    const monthFmt = new Intl.DateTimeFormat("de-DE", { timeZone: berlinTimeZone, month: "short" });
+    const calendarMonthFmt = new Intl.DateTimeFormat("de-DE", { timeZone: "UTC", month: "long", year: "numeric" });
+    const berlinPartsFmt = new Intl.DateTimeFormat("en-CA", { timeZone: berlinTimeZone, year: "numeric", month: "numeric", day: "numeric" });
+    const weekdays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
     function fillSelect(select, values) {
       values.forEach(value => {
@@ -100,16 +116,93 @@
         : `Anmeldefrist: ${dateFmt.format(date)}, ${timeFmt.format(date)} Uhr`;
     }
 
+    function renderCalendar(events) {
+      els.calendar.replaceChildren();
+      const todayParts = Object.fromEntries(
+        berlinPartsFmt.formatToParts(new Date())
+          .filter(part => part.type !== "literal")
+          .map(part => [part.type, Number(part.value)])
+      );
+
+      for (let offset = 0; offset < 3; offset += 1) {
+        const monthStart = new Date(Date.UTC(todayParts.year, todayParts.month - 1 + offset, 1, 12));
+        const monthYear = monthStart.getUTCFullYear();
+        const monthIndex = monthStart.getUTCMonth();
+        const monthEndDay = new Date(Date.UTC(monthYear, monthIndex + 1, 0, 12)).getUTCDate();
+        const eventsByDay = new Map();
+
+        events.forEach(event => {
+          const [eventYear, eventMonth, day] = event.start.slice(0, 10).split("-").map(Number);
+          if (eventYear !== monthYear || eventMonth !== monthIndex + 1) return;
+          if (!eventsByDay.has(day)) eventsByDay.set(day, []);
+          eventsByDay.get(day).push(event);
+        });
+
+        const month = document.createElement("article");
+        month.className = "calendar-month";
+        const title = document.createElement("h3");
+        title.textContent = calendarMonthFmt.format(monthStart);
+        month.append(title);
+
+        const days = document.createElement("div");
+        days.className = "calendar-days";
+        weekdays.forEach(weekday => {
+          const label = document.createElement("span");
+          label.className = "calendar-weekday";
+          label.textContent = weekday;
+          days.append(label);
+        });
+
+        const leadingBlanks = (monthStart.getUTCDay() + 6) % 7;
+        for (let blank = 0; blank < leadingBlanks; blank += 1) {
+          const spacer = document.createElement("span");
+          spacer.className = "calendar-day calendar-day--empty";
+          spacer.setAttribute("aria-hidden", "true");
+          days.append(spacer);
+        }
+
+        for (let day = 1; day <= monthEndDay; day += 1) {
+          const dayEvents = eventsByDay.get(day) || [];
+          const cell = document.createElement("span");
+          cell.className = "calendar-day";
+          cell.textContent = day;
+          if (monthYear === todayParts.year && monthIndex + 1 === todayParts.month && day === todayParts.day) {
+            cell.classList.add("calendar-day--today");
+          }
+          if (dayEvents.length) {
+            cell.classList.add("calendar-day--event");
+            const names = dayEvents.map(event => event.name).join(", ");
+            cell.title = names;
+            cell.setAttribute("aria-label", `${day}. ${calendarMonthFmt.format(monthStart)}: ${names}`);
+            if (dayEvents.length > 1) {
+              const count = document.createElement("small");
+              count.textContent = dayEvents.length;
+              cell.append(count);
+            }
+          }
+          days.append(cell);
+        }
+
+        month.append(days);
+        els.calendar.append(month);
+      }
+    }
+
     function render() {
       const filtered = state.events.filter(event =>
         (!state.city || event.city === state.city) &&
         (!state.category || event.category === state.category)
       );
+      renderCalendar(filtered);
       els.events.replaceChildren();
       filtered.forEach(event => {
         const fragment = els.template.content.cloneNode(true);
         const start = new Date(event.start);
-        fragment.querySelector(".date-day").textContent = String(start.getDate()).padStart(2, "0");
+        const eventEnd = new Date(event.end || event.start);
+        const card = fragment.querySelector(".event-card");
+        card.dataset.eventId = event.id;
+        if (eventEnd < new Date()) card.classList.add("event-card--past");
+        fragment.querySelector(".date-day").textContent = event.start.slice(8, 10);
         fragment.querySelector(".date-month").textContent = monthFmt.format(start).replace(".", "");
         fragment.querySelector(".category").textContent = event.category;
         fragment.querySelector(".city").textContent = event.city;
@@ -140,9 +233,9 @@
         const response = await fetch("events.json", { cache: "no-store" });
         if (!response.ok) throw new Error("Termindaten konnten nicht geladen werden.");
         const data = await response.json();
-        const now = new Date();
+        const retentionCutoff = new Date(Date.now() - (3 * 24 * 60 * 60 * 1000));
         state.events = data.events
-          .filter(event => new Date(event.end || event.start) >= now)
+          .filter(event => new Date(event.end || event.start) >= retentionCutoff)
           .sort((a, b) => new Date(a.start) - new Date(b.start));
         fillSelect(els.city, [...new Set(state.events.map(e => e.city))].sort());
         fillSelect(els.category, [...new Set(state.events.map(e => e.category))].sort());
@@ -168,3 +261,4 @@
   </script>
 </body>
 </html>
+
