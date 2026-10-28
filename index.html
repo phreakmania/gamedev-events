@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kuratierte Veranstaltungen für ernsthafte Indie-Spieleentwicklung im Umkreis von Essen.">
   <title>GameDev-Termine rund um Essen</title>
-  <link rel="stylesheet" href="styles.css?v=20261028-4">
+  <link rel="stylesheet" href="styles.css?v=20261028-5">
 </head>
 <body>
   <header class="hero">
@@ -44,6 +44,10 @@
       <div class="section-heading">
         <h2 id="upcoming-title">Termine</h2>
         <p id="result-count"></p>
+      </div>
+      <div id="date-filter-status" class="date-filter-status" hidden>
+        <span id="date-filter-label"></span>
+        <button id="clear-date-filter" type="button">Alle Tage anzeigen</button>
       </div>
       <div id="events" class="event-grid" aria-live="polite"></div>
       <p id="empty-state" class="empty" hidden>Für diese Auswahl sind keine Termine vorhanden.</p>
@@ -84,7 +88,7 @@
   </template>
 
   <script>
-    const state = { events: [], city: "", category: "" };
+    const state = { events: [], city: "", category: "", date: "" };
     const els = {
       events: document.querySelector("#events"),
       city: document.querySelector("#city-filter"),
@@ -94,6 +98,9 @@
       count: document.querySelector("#result-count"),
       empty: document.querySelector("#empty-state"),
       calendar: document.querySelector("#calendar"),
+      dateStatus: document.querySelector("#date-filter-status"),
+      dateLabel: document.querySelector("#date-filter-label"),
+      clearDate: document.querySelector("#clear-date-filter"),
       template: document.querySelector("#event-template")
     };
 
@@ -102,6 +109,7 @@
     const timeFmt = new Intl.DateTimeFormat("de-DE", { timeZone: berlinTimeZone, hour: "2-digit", minute: "2-digit" });
     const monthFmt = new Intl.DateTimeFormat("de-DE", { timeZone: berlinTimeZone, month: "short" });
     const calendarMonthFmt = new Intl.DateTimeFormat("de-DE", { timeZone: "UTC", month: "long", year: "numeric" });
+    const selectedDateFmt = new Intl.DateTimeFormat("de-DE", { timeZone: "UTC", weekday: "long", day: "2-digit", month: "long", year: "numeric" });
     const berlinPartsFmt = new Intl.DateTimeFormat("en-CA", { timeZone: berlinTimeZone, year: "numeric", month: "numeric", day: "numeric" });
     const weekdays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
@@ -236,17 +244,30 @@
 
         for (let day = 1; day <= monthEndDay; day += 1) {
           const dayEvents = eventsByDay.get(day) || [];
-          const cell = document.createElement("span");
+          const dateKey = `${monthYear}-${String(monthIndex + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+          const cell = document.createElement(dayEvents.length ? "button" : "span");
           cell.className = "calendar-day";
           cell.textContent = day;
+          if (dayEvents.length) cell.type = "button";
           if (monthYear === todayParts.year && monthIndex + 1 === todayParts.month && day === todayParts.day) {
             cell.classList.add("calendar-day--today");
           }
           if (dayEvents.length) {
             cell.classList.add("calendar-day--event");
+            if (state.date === dateKey) {
+              cell.classList.add("calendar-day--selected");
+              cell.setAttribute("aria-pressed", "true");
+            } else {
+              cell.setAttribute("aria-pressed", "false");
+            }
             const names = dayEvents.map(event => event.name).join(", ");
             cell.title = names;
             cell.setAttribute("aria-label", `${day}. ${calendarMonthFmt.format(monthStart)}: ${names}`);
+            cell.addEventListener("click", () => {
+              state.date = state.date === dateKey ? "" : dateKey;
+              render();
+              document.querySelector("#upcoming-title").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
             if (dayEvents.length > 1) {
               const count = document.createElement("small");
               count.textContent = dayEvents.length;
@@ -262,11 +283,17 @@
     }
 
     function render() {
-      const filtered = state.events.filter(event =>
+      const categoryFiltered = state.events.filter(event =>
         (!state.city || event.city === state.city) &&
         (!state.category || event.category === state.category)
       );
-      renderCalendar(filtered);
+      renderCalendar(categoryFiltered);
+      const filtered = categoryFiltered.filter(event => !state.date || event.start.slice(0, 10) === state.date);
+      els.dateStatus.hidden = !state.date;
+      if (state.date) {
+        const [year, month, day] = state.date.split("-").map(Number);
+        els.dateLabel.textContent = `Ausgewählt: ${selectedDateFmt.format(new Date(Date.UTC(year, month - 1, day, 12)))}`;
+      }
       els.events.replaceChildren();
       filtered.forEach(event => {
         const fragment = els.template.content.cloneNode(true);
@@ -329,9 +356,14 @@
 
     els.city.addEventListener("change", event => { state.city = event.target.value; render(); });
     els.category.addEventListener("change", event => { state.category = event.target.value; render(); });
+    els.clearDate.addEventListener("click", () => {
+      state.date = "";
+      render();
+    });
     els.reset.addEventListener("click", () => {
       state.city = "";
       state.category = "";
+      state.date = "";
       els.city.value = "";
       els.category.value = "";
       render();

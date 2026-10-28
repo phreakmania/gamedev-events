@@ -50,11 +50,23 @@ h2 { margin: 0; font-size: clamp(1.55rem, 4vw, 2.15rem); }
 .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: .28rem; }
 .calendar-weekday, .calendar-day { display: grid; place-items: center; min-width: 0; aspect-ratio: 1; font-size: .78rem; border-radius: .45rem; }
 .calendar-weekday { aspect-ratio: auto; padding-bottom: .25rem; color: var(--muted); font-size: .66rem; font-weight: 800; }
-.calendar-day { position: relative; color: var(--muted); }
+.calendar-day { position: relative; color: var(--muted); border: 0; padding: 0; min-height: 0; background: transparent; font: inherit; }
+button.calendar-day { cursor: pointer; }
+button.calendar-day:hover { background: rgba(255,116,23,.28); }
+button.calendar-day:focus-visible { outline: 3px solid rgba(255,154,77,.42); outline-offset: 2px; }
 .calendar-day--empty { visibility: hidden; }
 .calendar-day--today { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); color: var(--text); }
 .calendar-day--event { background: rgba(255,116,23,.18); color: var(--accent-strong); font-weight: 850; box-shadow: inset 0 0 0 1px rgba(255,116,23,.5); }
+.calendar-day--selected { background: var(--accent) !important; color: #1b0e05; box-shadow: 0 0 0 3px rgba(255,116,23,.22) !important; }
 .calendar-day--event small { position: absolute; top: -.28rem; right: -.2rem; display: grid; place-items: center; min-width: 1rem; height: 1rem; padding: 0 .2rem; border-radius: 999px; background: var(--warning); color: #172027; font-size: .58rem; font-weight: 900; }
+.date-filter-status {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  margin: 0 0 1rem; padding: .75rem .9rem; border: 1px solid rgba(255,116,23,.4);
+  border-radius: .75rem; background: rgba(255,116,23,.08); color: var(--accent-strong);
+  font-size: .9rem; font-weight: 750;
+}
+.date-filter-status[hidden] { display: none; }
+.date-filter-status button { min-height: 36px; padding: .4rem .65rem; white-space: nowrap; }
 .event-grid { display: grid; gap: 1rem; }
 .event-card {
   display: grid; grid-template-columns: 76px 1fr; gap: 1.25rem;
@@ -112,6 +124,8 @@ footer p { border-top: 1px solid var(--border); padding-top: 1.25rem; }
   .toolbar label, .toolbar button { width: 100%; }
   .event-card { grid-template-columns: 56px 1fr; gap: .9rem; padding: 1rem; }
   .event-card__date { width: 56px; height: 64px; }
+  .date-filter-status { align-items: stretch; flex-direction: column; }
+  .date-filter-status button { width: 100%; }
   .calendar-actions { display: grid; grid-template-columns: 1fr; }
   .calendar-link { width: 100%; }
   .date-day { font-size: 1.35rem; }
