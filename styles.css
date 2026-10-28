@@ -29,6 +29,17 @@ h1 { max-width: 850px; margin: 0; font-size: clamp(2.35rem, 7vw, 5rem); line-hei
 .intro { max-width: 760px; margin: 1.3rem 0 2rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.18rem); }
 .toolbar { display: flex; flex-wrap: wrap; gap: .8rem; align-items: end; }
 .toolbar label { display: grid; gap: .35rem; min-width: 180px; color: var(--muted); font-size: .82rem; font-weight: 700; }
+.format-filter { min-width: min(100%, 520px); margin: 0; padding: 0; border: 0; }
+.format-filter legend { margin-bottom: .35rem; color: var(--muted); font-size: .82rem; font-weight: 700; }
+.format-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+.format-tags button {
+  min-height: 40px; padding: .48rem .72rem; border-radius: 999px;
+  background: var(--surface-2); color: var(--muted); font-size: .82rem; font-weight: 750;
+}
+.format-tags button[aria-pressed="true"] {
+  border-color: var(--accent); background: var(--accent); color: #1b0e05;
+  box-shadow: 0 0 0 3px rgba(255,116,23,.14);
+}
 select, button {
   min-height: 44px; border: 1px solid var(--border); border-radius: .6rem;
   background: var(--surface-2); color: var(--text); padding: .65rem .8rem; font: inherit;
@@ -82,9 +93,12 @@ button.calendar-day:focus-visible { outline: 3px solid rgba(255,154,77,.42); out
 .date-day { font-size: 1.75rem; font-weight: 800; line-height: 1; }
 .date-month { margin-top: .2rem; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .event-card__meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .4rem; }
-.category, .city { border-radius: 999px; padding: .22rem .55rem; font-size: .72rem; font-weight: 750; }
+.event-tags { display: contents; }
+.category, .city, .delivery { border-radius: 999px; padding: .22rem .55rem; font-size: .72rem; font-weight: 750; }
 .category { background: rgba(255,116,23,.14); color: var(--accent-strong); }
 .city { background: rgba(255,255,255,.07); color: var(--muted); }
+.delivery { background: rgba(147,103,214,.18); color: #d8b9ff; }
+.delivery[hidden] { display: none; }
 h3 { margin: 0 0 .45rem; font-size: clamp(1.2rem, 3vw, 1.55rem); }
 .time-place { margin: 0 0 .9rem; color: var(--muted); }
 .relevance { margin: 0 0 1rem; }
@@ -121,7 +135,10 @@ footer p { border-top: 1px solid var(--border); padding-top: 1.25rem; }
 @media (max-width: 600px) {
   .hero__inner { padding-top: 3rem; }
   .toolbar { align-items: stretch; }
-  .toolbar label, .toolbar button { width: 100%; }
+  .toolbar label, .toolbar > .reset-filter { width: 100%; }
+  .format-filter { width: 100%; }
+  .format-tags { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .format-tags button { width: 100%; min-height: 44px; }
   .event-card { grid-template-columns: 56px 1fr; gap: .9rem; padding: 1rem; }
   .event-card__date { width: 56px; height: 64px; }
   .date-filter-status { align-items: stretch; flex-direction: column; }
