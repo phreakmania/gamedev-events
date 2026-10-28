@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kuratierte Veranstaltungen für ernsthafte Indie-Spieleentwicklung im Umkreis von Essen.">
   <title>GameDev-Termine rund um Essen</title>
-  <link rel="stylesheet" href="styles.css?v=20261028-5">
+  <link rel="stylesheet" href="styles.css?v=20261028-6">
 </head>
 <body>
   <header class="hero">
@@ -18,11 +18,17 @@
           <span>Ort</span>
           <select id="city-filter"><option value="">Alle Orte</option></select>
         </label>
-        <label>
-          <span>Format</span>
-          <select id="category-filter"><option value="">Alle Formate</option></select>
-        </label>
-        <button id="reset-filter" type="button">Filter zurücksetzen</button>
+        <fieldset id="format-filter" class="format-filter">
+          <legend>Formate · Mehrfachauswahl</legend>
+          <div class="format-tags">
+            <button type="button" data-format="Networking" aria-pressed="false">Networking</button>
+            <button type="button" data-format="Workshops" aria-pressed="false">Workshops</button>
+            <button type="button" data-format="Vorträge" aria-pressed="false">Vorträge</button>
+            <button type="button" data-format="Showcase & Playtest" aria-pressed="false">Showcase & Playtest</button>
+            <button type="button" data-format="Business & Branche" aria-pressed="false">Business & Branche</button>
+          </div>
+        </fieldset>
+        <button id="reset-filter" class="reset-filter" type="button">Filter zurücksetzen</button>
       </div>
       <p id="updated" class="updated" aria-live="polite"></p>
     </div>
@@ -66,8 +72,9 @@
       </div>
       <div class="event-card__body">
         <div class="event-card__meta">
-          <span class="category"></span>
+          <span class="event-tags"></span>
           <span class="city"></span>
+          <span class="delivery" hidden>Digital Only</span>
         </div>
         <h3></h3>
         <p class="time-place"></p>
@@ -88,11 +95,11 @@
   </template>
 
   <script>
-    const state = { events: [], city: "", category: "", date: "" };
+    const state = { events: [], city: "", formats: new Set(), date: "" };
     const els = {
       events: document.querySelector("#events"),
       city: document.querySelector("#city-filter"),
-      category: document.querySelector("#category-filter"),
+      formats: document.querySelector("#format-filter"),
       reset: document.querySelector("#reset-filter"),
       updated: document.querySelector("#updated"),
       count: document.querySelector("#result-count"),
@@ -120,6 +127,30 @@
         option.textContent = value;
         select.append(option);
       });
+    }
+
+    const categoryTags = {
+      "B2B-Networking": ["Networking", "Business & Branche"],
+      "Branchenevent & Networking": ["Networking", "Business & Branche"],
+      "Entwickler-Networking": ["Networking"],
+      "Fachvortrag": ["Vorträge"],
+      "Fachvortrag & Networking": ["Vorträge", "Networking"],
+      "Indie-Meetup & Playtest": ["Showcase & Playtest", "Networking"],
+      "Projektfeedback & Networking": ["Showcase & Playtest", "Networking"],
+      "Showcase & Networking": ["Showcase & Playtest", "Networking"],
+      "Studioaufbau & Networking": ["Business & Branche", "Networking"],
+      "Workshop & Networking": ["Workshops", "Networking"],
+      "Workshops & Networking": ["Workshops", "Networking"]
+    };
+
+    function eventTags(event) {
+      return categoryTags[event.category] || [event.category];
+    }
+
+    function isDigital(event) {
+      return event.online === true ||
+        event.city === "Digital Only" ||
+        /\b(online|zoom|remote|digital only)\b/i.test(event.venue);
     }
 
     function calendarEnd(event) {
@@ -283,12 +314,15 @@
     }
 
     function render() {
-      const categoryFiltered = state.events.filter(event =>
-        (!state.city || event.city === state.city) &&
-        (!state.category || event.category === state.category)
-      );
-      renderCalendar(categoryFiltered);
-      const filtered = categoryFiltered.filter(event => !state.date || event.start.slice(0, 10) === state.date);
+      const formatFiltered = state.events.filter(event => {
+        const cityMatches = !state.city ||
+          (state.city === "Digital Only" ? isDigital(event) : event.city === state.city);
+        const formatMatches = state.formats.size === 0 ||
+          eventTags(event).some(tag => state.formats.has(tag));
+        return cityMatches && formatMatches;
+      });
+      renderCalendar(formatFiltered);
+      const filtered = formatFiltered.filter(event => !state.date || event.start.slice(0, 10) === state.date);
       els.dateStatus.hidden = !state.date;
       if (state.date) {
         const [year, month, day] = state.date.split("-").map(Number);
@@ -304,8 +338,16 @@
         if (eventEnd < new Date()) card.classList.add("event-card--past");
         fragment.querySelector(".date-day").textContent = event.start.slice(8, 10);
         fragment.querySelector(".date-month").textContent = monthFmt.format(start).replace(".", "");
-        fragment.querySelector(".category").textContent = event.category;
+        const tags = fragment.querySelector(".event-tags");
+        eventTags(event).forEach(tag => {
+          const badge = document.createElement("span");
+          badge.className = "category";
+          badge.textContent = tag;
+          tags.append(badge);
+        });
         fragment.querySelector(".city").textContent = event.city;
+        const delivery = fragment.querySelector(".delivery");
+        if (isDigital(event)) delivery.hidden = false;
         fragment.querySelector("h3").textContent = event.name;
         const time = event.end
           ? `${timeFmt.format(start)}–${timeFmt.format(new Date(event.end))} Uhr`
@@ -344,8 +386,7 @@
         state.events = data.events
           .filter(event => new Date(event.end || event.start) >= retentionCutoff)
           .sort((a, b) => new Date(a.start) - new Date(b.start));
-        fillSelect(els.city, [...new Set(state.events.map(e => e.city))].sort());
-        fillSelect(els.category, [...new Set(state.events.map(e => e.category))].sort());
+        fillSelect(els.city, ["Digital Only", ...[...new Set(state.events.map(e => e.city).filter(city => city !== "Digital Only"))].sort()]);
         els.updated.textContent = `Zuletzt geprüft: ${new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(data.updatedAt + "T12:00:00"))}`;
         render();
       } catch (error) {
@@ -355,17 +396,29 @@
     }
 
     els.city.addEventListener("change", event => { state.city = event.target.value; render(); });
-    els.category.addEventListener("change", event => { state.category = event.target.value; render(); });
+    els.formats.addEventListener("click", event => {
+      const button = event.target.closest("[data-format]");
+      if (!button) return;
+      const format = button.dataset.format;
+      if (state.formats.has(format)) {
+        state.formats.delete(format);
+        button.setAttribute("aria-pressed", "false");
+      } else {
+        state.formats.add(format);
+        button.setAttribute("aria-pressed", "true");
+      }
+      render();
+    });
     els.clearDate.addEventListener("click", () => {
       state.date = "";
       render();
     });
     els.reset.addEventListener("click", () => {
       state.city = "";
-      state.category = "";
+      state.formats.clear();
       state.date = "";
       els.city.value = "";
-      els.category.value = "";
+      els.formats.querySelectorAll("[data-format]").forEach(button => button.setAttribute("aria-pressed", "false"));
       render();
     });
 
