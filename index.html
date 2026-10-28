@@ -75,9 +75,9 @@
           <a class="calendar-link calendar-link--google" target="_blank" rel="noopener noreferrer">
             <span aria-hidden="true">＋</span> Google Kalender
           </a>
-          <button class="calendar-link calendar-link--ical" type="button">
+          <a class="calendar-link calendar-link--ical">
             <span aria-hidden="true">↓</span> iCalendar
-          </button>
+          </a>
         </div>
       </div>
     </article>
@@ -153,7 +153,7 @@
       return new Date(date).toISOString().replace(/[-:]/g, "").replace(/\.000/, "");
     }
 
-    function downloadIcs(event) {
+    function icsContent(event) {
       const lines = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
@@ -172,15 +172,11 @@
         "END:VEVENT",
         "END:VCALENDAR"
       ];
-      const blob = new Blob([lines.join("\r\n") + "\r\n"], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = `${event.id}.ics`;
-      document.body.append(anchor);
-      anchor.click();
-      anchor.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      return lines.join("\r\n") + "\r\n";
+    }
+
+    function icsDownloadUrl(event) {
+      return `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent(event))}`;
     }
 
     function deadlineText(deadline) {
@@ -302,9 +298,10 @@
         const googleLink = fragment.querySelector(".calendar-link--google");
         googleLink.href = googleCalendarUrl(event);
         googleLink.setAttribute("aria-label", `${event.name} zu Google Kalender hinzufügen`);
-        const icalButton = fragment.querySelector(".calendar-link--ical");
-        icalButton.setAttribute("aria-label", `${event.name} als iCalendar-Datei herunterladen`);
-        icalButton.addEventListener("click", () => downloadIcs(event));
+        const icalLink = fragment.querySelector(".calendar-link--ical");
+        icalLink.href = icsDownloadUrl(event);
+        icalLink.download = `${event.id}.ics`;
+        icalLink.setAttribute("aria-label", `${event.name} als iCalendar-Datei herunterladen`);
         els.events.append(fragment);
       });
       els.count.textContent = `${filtered.length} Termin${filtered.length === 1 ? "" : "e"}`;
