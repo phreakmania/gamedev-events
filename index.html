@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kuratierte Veranstaltungen für ernsthafte Indie-Spieleentwicklung im Umkreis von Essen.">
   <title>GameDev-Termine rund um Essen</title>
-  <link rel="stylesheet" href="styles.css?v=20261028-3">
+  <link rel="stylesheet" href="styles.css?v=20261028-4">
 </head>
 <body>
   <header class="hero">
@@ -71,6 +71,14 @@
         <div class="deadline" hidden></div>
         <p class="registration"></p>
         <a class="source" target="_blank" rel="noopener noreferrer">Offizielle Informationen <span aria-hidden="true">↗</span></a>
+        <div class="calendar-actions" aria-label="Zum Kalender hinzufügen">
+          <a class="calendar-link calendar-link--google" target="_blank" rel="noopener noreferrer">
+            <span aria-hidden="true">＋</span> Google Kalender
+          </a>
+          <a class="calendar-link calendar-link--ical">
+            <span aria-hidden="true">↓</span> iCalendar
+          </a>
+        </div>
       </div>
     </article>
   </template>
@@ -104,6 +112,71 @@
         option.textContent = value;
         select.append(option);
       });
+    }
+
+    function calendarEnd(event) {
+      return event.end ? new Date(event.end) : new Date(new Date(event.start).getTime() + 60 * 60 * 1000);
+    }
+
+    function calendarDescription(event) {
+      return [
+        event.relevance,
+        "",
+        `Anmeldung: ${event.registration}`,
+        event.deadline ? `Anmeldefrist: ${dateFmt.format(new Date(event.deadline))}, ${timeFmt.format(new Date(event.deadline))} Uhr` : "",
+        "",
+        `Offizielle Informationen: ${event.source}`
+      ].filter(Boolean).join("\n");
+    }
+
+    function googleCalendarUrl(event) {
+      const compactUtc = date => new Date(date).toISOString().replace(/[-:]/g, "").replace(/\.000/, "");
+      const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: event.name,
+        dates: `${compactUtc(event.start)}/${compactUtc(calendarEnd(event))}`,
+        details: calendarDescription(event),
+        location: `${event.venue}, ${event.city}`
+      });
+      return `https://calendar.google.com/calendar/render?${params.toString()}`;
+    }
+
+    function escapeIcs(value) {
+      return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/;/g, "\\;")
+        .replace(/,/g, "\\,");
+    }
+
+    function icsUtc(date) {
+      return new Date(date).toISOString().replace(/[-:]/g, "").replace(/\.000/, "");
+    }
+
+    function icsContent(event) {
+      const lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//GameDev Events Essen//DE",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:${escapeIcs(event.id)}@gamedev-events.phreakmania.github.io`,
+        `DTSTAMP:${icsUtc(new Date())}`,
+        `DTSTART:${icsUtc(event.start)}`,
+        `DTEND:${icsUtc(calendarEnd(event))}`,
+        `SUMMARY:${escapeIcs(event.name)}`,
+        `LOCATION:${escapeIcs(`${event.venue}, ${event.city}`)}`,
+        `DESCRIPTION:${escapeIcs(calendarDescription(event))}`,
+        `URL:${event.source}`,
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ];
+      return lines.join("\r\n") + "\r\n";
+    }
+
+    function icsDownloadUrl(event) {
+      return `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent(event))}`;
     }
 
     function deadlineText(deadline) {
@@ -222,6 +295,13 @@
         const link = fragment.querySelector(".source");
         link.href = event.source;
         link.setAttribute("aria-label", `Offizielle Informationen zu ${event.name}`);
+        const googleLink = fragment.querySelector(".calendar-link--google");
+        googleLink.href = googleCalendarUrl(event);
+        googleLink.setAttribute("aria-label", `${event.name} zu Google Kalender hinzufügen`);
+        const icalLink = fragment.querySelector(".calendar-link--ical");
+        icalLink.href = icsDownloadUrl(event);
+        icalLink.download = `${event.id}.ics`;
+        icalLink.setAttribute("aria-label", `${event.name} als iCalendar-Datei herunterladen`);
         els.events.append(fragment);
       });
       els.count.textContent = `${filtered.length} Termin${filtered.length === 1 ? "" : "e"}`;
