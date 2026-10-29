@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-29",
   "events": [
     {
       "id": "cgl-worldbuilding-2026",
@@ -130,6 +130,19 @@
       "registration": "Auf der städtischen Seite bislang keine Anmeldung, Gebühr oder Frist angegeben.",
       "deadline": null,
       "source": "https://www.duesseldorf.de/stadtbuechereien/veranstaltungen/veranstaltungsdetails/newsdetail/19112026-gamedevs-nrw"
+    },
+    {
+      "id": "gaze-games-summit-2026",
+      "name": "Gaze & Games Summit 2026",
+      "start": "2026-11-27T00:00:00+01:00",
+      "end": null,
+      "venue": "Veranstaltungsort noch nicht veröffentlicht",
+      "city": "Köln",
+      "category": "Indie-Showcase & Workshops",
+      "relevance": "Indie-Games-Ausstellung, praxisnahe Workshops und Panels zu Spieleentwicklung, Marketing, Launches, Förderung, Finanzierung und Recht sowie professionelles Networking. Eine formlose Bewerbung als Speaker*in ist möglich.",
+      "registration": "Tickets sind verfügbar; Uhrzeit und genauer Veranstaltungsort sind noch nicht veröffentlicht.",
+      "deadline": null,
+      "source": "https://www.contentaffairs-agency.de/gazegames"
     },
     {
       "id": "dep-2026",
