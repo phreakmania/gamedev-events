@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-10-31",
   "events": [
     {
       "id": "cgl-worldbuilding-2026",
@@ -100,7 +100,7 @@
       "venue": "REWE digital, Schanzenstraße 6–20, Kupferwerk 2.20",
       "city": "Köln",
       "category": "Fachvortrag & Networking",
-      "relevance": "Vortrag von Papercoda Games zu Media Circus und Austausch über storyorientierte Spiele und eigene Projekte.",
+      "relevance": "Praxisdiskussion zu modularen Narrativsystemen und dem Problem der kombinatorischen Explosion bei Spielerentscheidungen – relevant für reaktive Geschichten, verzweigte Dialoge und langfristige WODA-/Universumsplanung.",
       "registration": "RSVP über Meetup; Plätze begrenzt.",
       "deadline": "2026-11-18T17:00:00+01:00",
       "source": "https://www.meetup.com/de-de/rewe-digital-events-cologne/events/317144880/"
@@ -143,6 +143,19 @@
       "registration": "Tickets sind verfügbar; Uhrzeit und genauer Veranstaltungsort sind noch nicht veröffentlicht.",
       "deadline": null,
       "source": "https://www.contentaffairs-agency.de/gazegames"
+    },
+    {
+      "id": "game-creators-2026-12",
+      "name": "Game Creators Cologne Meetup",
+      "start": "2026-12-03T19:00:00+01:00",
+      "end": null,
+      "venue": "Lost Level, Kyffhäuserstraße 39",
+      "city": "Köln",
+      "category": "Indie-Meetup & Networking",
+      "relevance": "Monatliches Treffen für Entwickler, Game Designer, Artists und weitere Games-Schaffende zum Netzwerken, Ideenaustausch und Finden möglicher Projektpartner.",
+      "registration": "Keine feste Frist oder Teilnahmegebühr auf der offiziellen Terminseite genannt.",
+      "deadline": null,
+      "source": "https://lostlevel.bar/events/game-creators-cologne-meetup/"
     },
     {
       "id": "dep-2026",
