@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03",
+  "updatedAt": "2026-11-04",
   "events": [
     {
       "id": "cgl-worldbuilding-2026",
@@ -156,6 +156,19 @@
       "registration": "Keine feste Frist oder Teilnahmegebühr auf der offiziellen Terminseite genannt.",
       "deadline": null,
       "source": "https://lostlevel.bar/events/game-creators-cologne-meetup/"
+    },
+    {
+      "id": "womenize-nrw-2026",
+      "name": "Womenize! NRW Chapter",
+      "start": "2026-12-07T00:00:00+01:00",
+      "end": null,
+      "venue": "STARTPLATZ Köln",
+      "city": "Köln",
+      "category": "Konferenz & Workshops",
+      "relevance": "Ganztägiges Games-&-Tech-Festival mit Konferenzprogramm, praxisnahen Workshops und Branchen-Networking. Themen rund um Strategie, Führung und Wachstum sind besonders relevant für den Aufbau eines ernsthaften Indie-Projekts oder Studios.",
+      "registration": "Tickets sind erhältlich; 30 % Rabatt auf das Business-Ticket bis 9. November 2026. Genaues Programm und Uhrzeiten folgen.",
+      "deadline": "2026-11-09T23:59:00+01:00",
+      "source": "https://www.womenize.net/2026/11/03/womenize-nrw-chapter-tickets-are-now-on-sale/"
     },
     {
       "id": "dep-2026",
