@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-06",
+  "updatedAt": "2026-11-07",
   "events": [
-    {
-      "id": "cgl-worldbuilding-2026",
-      "name": "Worldbuilding through Environments",
-      "start": "2026-11-03T17:30:00+01:00",
-      "end": null,
-      "venue": "Cologne Game Lab / Online via Zoom",
-      "city": "Köln",
-      "category": "Fachvortrag",
-      "relevance": "Praxisnaher Vortrag zu glaubwürdigen Spielwelten durch Architektur, Props, Materialien und räumliche Gestaltung – besonders nützlich für wiederverwendbare Raumtemplates, Hub und Arenen.",
-      "registration": "Keine Anmeldung oder Gebühr genannt; Zoom-Zugang auf der offiziellen Seite.",
-      "deadline": null,
-      "source": "https://colognegamelab.de/events/event/guest-lecture-by-concept-artist-can-basdogan/"
-    },
     {
       "id": "hsrw-spieleentwickler-2026",
       "name": "Spieleentwickler-Treffen: Ideen teilen, Kontakte knüpfen",
