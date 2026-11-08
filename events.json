@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-07",
+  "updatedAt": "2026-11-08",
   "events": [
-    {
-      "id": "hsrw-spieleentwickler-2026",
-      "name": "Spieleentwickler-Treffen: Ideen teilen, Kontakte knüpfen",
-      "start": "2026-11-04T16:00:00+01:00",
-      "end": "2026-11-04T20:00:00+01:00",
-      "venue": "Campus Kamp-Lintfort, Friedrich-Heinrich-Allee 25",
-      "city": "Kamp-Lintfort",
-      "category": "Showcase & Networking",
-      "relevance": "Entwickler-Talk, Networking und die Möglichkeit, ein eigenes Spiel auszustellen. Geeignet für einen präsentierbaren Build und direktes Feedback.",
-      "registration": "Kostenlos; vorherige Anmeldung erforderlich, Plätze begrenzt.",
-      "deadline": null,
-      "source": "https://www.hochschule-rhein-waal.de/kennenlernen/presse/veranstaltungen/detail/spieleentwickler-treffen-gaming-austausch-und-pizza"
-    },
     {
       "id": "games-beyond-duesseldorf-2026",
       "name": "Games Beyond Entertainment: Globale Perspektiven",
@@ -153,7 +140,7 @@
       "city": "Köln",
       "category": "Konferenz & Workshops",
       "relevance": "Ganztägiges Games-&-Tech-Festival mit Konferenzprogramm, praxisnahen Workshops und Branchen-Networking. Themen rund um Strategie, Führung und Wachstum sind besonders relevant für den Aufbau eines ernsthaften Indie-Projekts oder Studios.",
-      "registration": "Tickets sind erhältlich; 30 % Rabatt auf das Business-Ticket bis 9. November 2026. Genaues Programm und Uhrzeiten folgen.",
+      "registration": "Tickets sind erhältlich; 30 % Rabatt auf das Business-Ticket bis einschließlich 9. November 2026 mit dem Code START30. Beim Kauf von mindestens zwei Tickets zusammen mit einem cis-männlichen Ally gilt alternativ 25 % Ermäßigung. Genaues Programm und Uhrzeiten folgen.",
       "deadline": "2026-11-09T23:59:00+01:00",
       "source": "https://www.womenize.net/2026/11/03/womenize-nrw-chapter-tickets-are-now-on-sale/"
     },
@@ -162,11 +149,11 @@
       "name": "Deutscher Entwicklerpreis 2026",
       "start": "2026-12-08T16:30:00+01:00",
       "end": "2026-12-09T02:30:00+01:00",
-      "venue": "Gürzenich",
+      "venue": "Gürzenich, Martinstraße 29–37",
       "city": "Köln",
       "category": "Branchenevent & Networking",
       "relevance": "Networking-Dinner, Preisverleihung und After-Show-Party mit Studios, Indie-Teams, Publishern und weiteren Akteuren der deutschsprachigen Gamesbranche.",
-      "registration": "Tickets: Start-ups/Studierende 119 €, Professionals 159 €, VIP 229 €.",
+      "registration": "Tickets: Start-ups/Studierende 125 €, Professionals 169 €, VIP 249 €, jeweils zzgl. MwSt. Enthalten sind Preisverleihung, After-Show-Party, Buffet und Getränke.",
       "deadline": null,
       "source": "https://deutscherentwicklerpreis.de/tickets/"
     },
