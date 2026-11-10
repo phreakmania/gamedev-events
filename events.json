@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-10",
   "events": [
     {
       "id": "gamedevtreff-bochum-2026-11",
@@ -114,8 +114,8 @@
       "city": "Köln",
       "category": "Konferenz & Workshops",
       "relevance": "Ganztägiges Games-&-Tech-Festival mit Konferenzprogramm, praxisnahen Workshops und Branchen-Networking. Themen rund um Strategie, Führung und Wachstum sind besonders relevant für den Aufbau eines ernsthaften Indie-Projekts oder Studios.",
-      "registration": "Tickets sind erhältlich; 30 % Rabatt auf das Business-Ticket bis einschließlich 9. November 2026 mit dem Code START30. Beim Kauf von mindestens zwei Tickets zusammen mit einem cis-männlichen Ally gilt alternativ 25 % Ermäßigung. Genaues Programm und Uhrzeiten folgen.",
-      "deadline": "2026-11-09T23:59:00+01:00",
+      "registration": "Tickets sind erhältlich. Beim Kauf von mindestens zwei Tickets zusammen mit einem cis-männlichen Ally gilt laut Veranstalter 25 % Ermäßigung. Genaues Programm und Uhrzeiten folgen.",
+      "deadline": null,
       "source": "https://www.womenize.net/2026/11/03/womenize-nrw-chapter-tickets-are-now-on-sale/"
     },
     {
@@ -143,6 +143,19 @@
       "registration": "Zusage über Meetup; Präsentationsanmeldung vor Ort ab 19:15 Uhr.",
       "deadline": null,
       "source": "https://www.meetup.com/de-de/gamedevtreff-ruhrpott/events/xqfqwtyjcqblb/"
+    },
+    {
+      "id": "gamedevtreff-bochum-2027-01",
+      "name": "GameDevTreff Ruhrpott",
+      "start": "2027-01-12T19:00:00+01:00",
+      "end": "2027-01-12T22:00:00+01:00",
+      "venue": "SAE Institute Bochum, Springerplatz 1",
+      "city": "Bochum",
+      "category": "Projektfeedback & Networking",
+      "relevance": "Projektvorstellungen mit direktem Community-Feedback, Fragen und Networking; Projekte sind in jedem Entwicklungsstadium willkommen und können vor Ort zur Präsentation angemeldet werden.",
+      "registration": "Zusage über Meetup; Präsentationsanmeldung vor Ort ab 19:15 Uhr.",
+      "deadline": null,
+      "source": "https://www.meetup.com/gamedevtreff-ruhrpott/events/xqfqwtykccbqb/"
     }
   ]
 }
