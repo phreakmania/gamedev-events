@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "events": [
-    {
-      "id": "gamedevtreff-bochum-2026-11",
-      "name": "GameDevTreff Ruhrpott",
-      "start": "2026-11-10T19:00:00+01:00",
-      "end": "2026-11-10T22:00:00+01:00",
-      "venue": "SAE Institute Bochum, Springerplatz 1",
-      "city": "Bochum",
-      "category": "Projektfeedback & Networking",
-      "relevance": "Monatliche Projektvorstellungen mit Fragen, Community-Feedback und Networking; Projekte sind in jedem Entwicklungsstadium willkommen.",
-      "registration": "Zusage über Meetup; Präsentationsanmeldung vor Ort ab 19:15 Uhr.",
-      "deadline": null,
-      "source": "https://www.meetup.com/de-de/gamedevtreff-ruhrpott/events/316946105/"
-    },
     {
       "id": "gsc-connect-2026",
       "name": "Games Syndicate Cologne Connect",
@@ -78,6 +65,19 @@
       "registration": "Auf der städtischen Seite bislang keine Anmeldung, Gebühr oder Frist angegeben.",
       "deadline": null,
       "source": "https://www.duesseldorf.de/stadtbuechereien/veranstaltungen/veranstaltungsdetails/newsdetail/19112026-gamedevs-nrw"
+    },
+    {
+      "id": "mgzstart-info-2026",
+      "name": "Digitale Informationsveranstaltung zu MGZstart 2027",
+      "start": "2026-11-20T16:00:00+01:00",
+      "end": null,
+      "venue": "Online via Microsoft Teams",
+      "city": "Digital Only",
+      "category": "Förderung & Gründung",
+      "relevance": "Direkte Fragerunde zum MGZstart-Gründungsstipendium für Medienunternehmen einschließlich Games: 12.000 Euro Startkapital, Seminare, individuelles Coaching und Branchennetzwerk. Besonders relevant für die mögliche Studio- und Unternehmensgründung rund um WODA oder kleinere kommerzielle Spiele.",
+      "registration": "Kostenlose digitale Teilnahme über den auf der offiziellen MGZ-Seite verlinkten Microsoft-Teams-Zugang; keine separate Anmeldefrist genannt.",
+      "deadline": "2026-11-30T23:59:00+01:00",
+      "source": "https://www.mediengruenderzentrum.de/mgzstart/"
     },
     {
       "id": "gaze-games-summit-2026",
