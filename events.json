@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "events": [
     {
       "id": "gsc-connect-2026",
@@ -35,8 +35,8 @@
       "venue": "REWE digital, Schanzenstraße 6–20, Kupferwerk 2.20",
       "city": "Köln",
       "category": "Fachvortrag & Networking",
-      "relevance": "Praxisdiskussion zu modularen Narrativsystemen und dem Problem der kombinatorischen Explosion bei Spielerentscheidungen – relevant für reaktive Geschichten, verzweigte Dialoge und langfristige WODA-/Universumsplanung.",
-      "registration": "RSVP über Meetup; Plätze begrenzt.",
+      "relevance": "Praxisvortrag von Pragya Mukherjee (Papercode Games) zum News-Game „Media Circus“, einem satirischen narrativen Strategiespiel über Einfluss, Macht und wirtschaftlichen Druck im Journalismus, plus Austausch zu storyfokussierten Spielen und eigenen Projekten.",
+      "registration": "RSVP über Meetup; Plätze begrenzt. Anmeldeschluss am 18. November um 17:00 Uhr.",
       "deadline": "2026-11-18T17:00:00+01:00",
       "source": "https://www.meetup.com/de-de/rewe-digital-events-cologne/events/317144880/"
     },
@@ -55,16 +55,16 @@
     },
     {
       "id": "gamedevs-nrw-2026-11",
-      "name": "GAMEDEVS.NRW Meetup Düsseldorf",
-      "start": "2026-11-19T17:00:00+01:00",
-      "end": "2026-11-19T20:30:00+01:00",
+      "name": "GAMEDEVS.NRW Afterwork Q4/26 – GTA VI Day",
+      "start": "2026-11-19T17:30:00+01:00",
+      "end": "2026-11-19T21:45:00+01:00",
       "venue": "Zentralbibliothek Düsseldorf, Reallabor, Konrad-Adenauer-Platz 1",
       "city": "Düsseldorf",
       "category": "Entwickler-Networking",
-      "relevance": "Austauschplattform für Entwickler, Unternehmen, Studierende und weitere Akteure der regionalen Games-Szene.",
-      "registration": "Auf der städtischen Seite bislang keine Anmeldung, Gebühr oder Frist angegeben.",
+      "relevance": "Kostenloses Entwickler-Networking mit der konkreten Möglichkeit, eigene Spiele oder Prototypen zu zeigen, Playtesting und Feedback zu erhalten, ein Portfolio vorzustellen oder nach vorheriger Abstimmung einen 15-minütigen Micro-Talk zu halten.",
+      "registration": "Kostenloses Ticket über Eventbrite; Einlass 17:30 Uhr, offizieller Beginn 18:00 Uhr. Für einen Micro-Talk vorab den Veranstalter kontaktieren.",
       "deadline": null,
-      "source": "https://www.duesseldorf.de/stadtbuechereien/veranstaltungen/veranstaltungsdetails/newsdetail/19112026-gamedevs-nrw"
+      "source": "https://www.eventbrite.de/e/gamedevsnrw-afterwork-q426-gta-vi-day-tickets-2003707767872"
     },
     {
       "id": "mgzstart-info-2026",
