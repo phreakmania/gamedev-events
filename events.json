@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "events": [
-    {
-      "id": "gsc-connect-2026",
-      "name": "Games Syndicate Cologne Connect",
-      "start": "2026-11-12T17:30:00+01:00",
-      "end": "2026-11-12T20:00:00+01:00",
-      "venue": "XPERION, Hohe Straße 46",
-      "city": "Köln",
-      "category": "B2B-Networking",
-      "relevance": "Professionelles Netzwerktreffen für Geschäftskontakte, Kooperationen sowie Gespräche mit regionalen Studios und Branchenakteuren.",
-      "registration": "Ticket über Eventbrite; die Anmeldeseite ist weiterhin geöffnet.",
-      "deadline": null,
-      "source": "https://www.eventbrite.de/e/einladung-zum-games-syndicate-cologne-ev-connect-tickets-2003358568407"
-    },
     {
       "id": "skilltree-nrw-2026",
       "name": "Skilltree NRW 2026",
