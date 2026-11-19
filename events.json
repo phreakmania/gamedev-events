@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18",
+  "updatedAt": "2026-11-19",
   "events": [
     {
       "id": "narrative-game-design-2026-11",
@@ -58,13 +58,13 @@
       "name": "Gaze & Games Summit 2026",
       "start": "2026-11-27T00:00:00+01:00",
       "end": null,
-      "venue": "Veranstaltungsort noch nicht veröffentlicht",
+      "venue": "XPERION Köln, Hohe Straße 46",
       "city": "Köln",
       "category": "Indie-Showcase & Workshops",
-      "relevance": "Indie-Games-Ausstellung, Networking und praxisnahe Inhalte zu Spieleentwicklung, Marketing, Launches, Förderung, Finanzierung und Recht. Bestätigt sind unter anderem Michaela Bartelt-Krantz, Josefine Maier, Serah Jung und Harshitth Manickaratnam sowie Workshops zu Pitching, Rechtsberatung und schwierigen Gesprächen.",
-      "registration": "Tickets einschließlich einer vergünstigten Kategorie für Studierende und Auszubildende sind verfügbar; Uhrzeit und genauer Veranstaltungsort sind weiterhin nicht veröffentlicht.",
+      "relevance": "Indie-Games-Ausstellung, Matchmaking und Networking sowie praxisnahe Panels und Workshops zu Spieleentwicklung, Games-Marketing, Launches, Creator Economy, Förderung, Finanzierung, Recht, Positionierung und Pitching. Bestätigt sind unter anderem Michaela Bartelt-Krantz, Esther Kerkhoff, Polo Türk, Serah Jung und Josefine Meier.",
+      "registration": "Tickets sind verfügbar. Mit dem Code CREATIVENRW100 gibt es ein begrenztes Kontingent kostenloser Tickets, solange der Vorrat reicht; Uhrzeit weiterhin nicht veröffentlicht.",
       "deadline": null,
-      "source": "https://www.contentaffairs-agency.de/gazegames"
+      "source": "https://creative.nrw/news/summit-fuer-diversitaet-und-empowerment-in-der-games-und-kreativbranche/"
     },
     {
       "id": "game-creators-2026-12",
