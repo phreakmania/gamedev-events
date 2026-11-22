@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-21",
+  "updatedAt": "2026-11-22",
   "events": [
-    {
-      "id": "narrative-game-design-2026-11",
-      "name": "Game Narrative Meetup Cologne @ REWE digital",
-      "start": "2026-11-18T18:00:00+01:00",
-      "end": "2026-11-18T21:00:00+01:00",
-      "venue": "REWE digital, Schanzenstraße 6–20, Kupferwerk 2.20",
-      "city": "Köln",
-      "category": "Fachvortrag & Networking",
-      "relevance": "Praxisdiskussion „Choice vs Control“ mit Pragya Mukherjee (Papercoda Games) über modulare Narrativsysteme und die kombinatorische Explosion bei entscheidungsbasierten Geschichten. Als konkretes Fallbeispiel dient das narrative Sandbox-Spiel „Media Circus“; anschließend Austausch zu responsiven Erzählungen und eigenen Projekten.",
-      "registration": "Anmeldung geschlossen; Anmeldeschluss war am 18. November 2026 um 17:00 Uhr.",
-      "deadline": "2026-11-18T17:00:00+01:00",
-      "source": "https://www.meetup.com/de-de/rewe-digital-events-cologne/events/317144880/"
-    },
     {
       "id": "games-beyond-koeln-2026",
       "name": "Games Beyond Entertainment: Nachhaltige Gamesbranche",
