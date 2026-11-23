@@ -1,32 +1,6 @@
 {
-  "updatedAt": "2026-11-22",
+  "updatedAt": "2026-11-23",
   "events": [
-    {
-      "id": "games-beyond-koeln-2026",
-      "name": "Games Beyond Entertainment: Nachhaltige Gamesbranche",
-      "start": "2026-11-19T12:00:00+01:00",
-      "end": "2026-11-19T17:00:00+01:00",
-      "venue": "Open Space KölnBusiness, Börsenplatz 1",
-      "city": "Köln",
-      "category": "Studioaufbau & Networking",
-      "relevance": "Sustainable Games Standard, wirtschaftliche Zukunftsfähigkeit kleiner Studios, World Café und Branchennetworking.",
-      "registration": "Anmeldung per E-Mail an aussenstelle.duesseldorf@engagement-global.de.",
-      "deadline": "2026-10-30T23:59:00+01:00",
-      "source": "https://www.engagement-global.de/de/veranstaltung-detail/15267--games-beyond-entertainment--forum-fuer-impact-innovation-und-globale-verantwortung"
-    },
-    {
-      "id": "gamedevs-nrw-2026-11",
-      "name": "GAMEDEVS.NRW Afterwork Q4/26 – GTA VI Day",
-      "start": "2026-11-19T17:30:00+01:00",
-      "end": "2026-11-19T21:45:00+01:00",
-      "venue": "Zentralbibliothek Düsseldorf, Reallabor, Konrad-Adenauer-Platz 1",
-      "city": "Düsseldorf",
-      "category": "Entwickler-Networking",
-      "relevance": "Kostenloses Entwickler-Networking mit der konkreten Möglichkeit, eigene Spiele oder Prototypen zu zeigen, Playtesting und Feedback zu erhalten, ein Portfolio vorzustellen oder nach vorheriger Abstimmung einen 15-minütigen Micro-Talk zu halten.",
-      "registration": "Kostenloses Ticket über Eventbrite; Einlass 17:30 Uhr, offizieller Beginn 18:00 Uhr. Für einen Micro-Talk vorab den Veranstalter kontaktieren.",
-      "deadline": null,
-      "source": "https://www.eventbrite.de/e/gamedevsnrw-afterwork-q426-gta-vi-day-tickets-2003707767872"
-    },
     {
       "id": "mgzstart-info-2026",
       "name": "Digitale Informationsveranstaltung zu MGZstart 2027",
@@ -55,16 +29,16 @@
     },
     {
       "id": "game-creators-2026-12",
-      "name": "Game Creators Cologne Meetup",
-      "start": "2026-12-03T19:00:00+01:00",
-      "end": null,
-      "venue": "Lost Level, Kyffhäuserstraße 39",
+      "name": "Game Creators Meetup #09",
+      "start": "2026-12-10T19:00:00+01:00",
+      "end": "2026-12-10T21:00:00+01:00",
+      "venue": "SOLIT Marketing, Kutscherhaus, Roonstraße 11",
       "city": "Köln",
       "category": "Indie-Meetup & Networking",
-      "relevance": "Monatliches Treffen für Entwickler, Game Designer, Artists und weitere Games-Schaffende zum Netzwerken, Ideenaustausch und Finden möglicher Projektpartner.",
-      "registration": "Keine feste Frist oder Teilnahmegebühr auf der offiziellen Terminseite genannt.",
+      "relevance": "Jahresabschluss-Treffen für Entwickler, Game Designer, Artists und weitere Games-Schaffende in exklusiv verfügbarer Location. Eigene Projekte und Fortschritte können gezeigt oder vorgestellt werden; im Mittelpunkt stehen Austausch, Ideen und professionelles Networking.",
+      "registration": "Zusage über Meetup; keine Anmeldefrist oder Teilnahmegebühr genannt.",
       "deadline": null,
-      "source": "https://lostlevel.bar/events/game-creators-cologne-meetup/"
+      "source": "https://www.meetup.com/gamecreatorscologne/events/317524931/"
     },
     {
       "id": "womenize-nrw-2026",
