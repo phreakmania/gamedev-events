@@ -1,19 +1,6 @@
 {
-  "updatedAt": "2026-11-23",
+  "updatedAt": "2026-11-24",
   "events": [
-    {
-      "id": "mgzstart-info-2026",
-      "name": "Digitale Informationsveranstaltung zu MGZstart 2027",
-      "start": "2026-11-20T16:00:00+01:00",
-      "end": null,
-      "venue": "Online via Microsoft Teams",
-      "city": "Digital Only",
-      "category": "Förderung & Gründung",
-      "relevance": "Direkte Fragerunde zum MGZstart-Gründungsstipendium für Medienunternehmen einschließlich Games: 12.000 Euro Startkapital, Seminare, individuelles Coaching und Branchennetzwerk. Besonders relevant für die mögliche Studio- und Unternehmensgründung rund um WODA oder kleinere kommerzielle Spiele.",
-      "registration": "Kostenlose digitale Teilnahme über den auf der offiziellen MGZ-Seite verlinkten Microsoft-Teams-Zugang; keine separate Anmeldefrist genannt.",
-      "deadline": "2026-11-30T23:59:00+01:00",
-      "source": "https://www.mediengruenderzentrum.de/mgzstart/"
-    },
     {
       "id": "gaze-games-summit-2026",
       "name": "Gaze & Games Summit 2026",
@@ -43,15 +30,15 @@
     {
       "id": "womenize-nrw-2026",
       "name": "Womenize! NRW Chapter",
-      "start": "2026-12-07T00:00:00+01:00",
-      "end": null,
-      "venue": "STARTPLATZ Köln",
+      "start": "2026-12-07T10:00:00+01:00",
+      "end": "2026-12-07T20:00:00+01:00",
+      "venue": "STARTPLATZ Köln, Im Mediapark 5",
       "city": "Köln",
       "category": "Konferenz & Workshops",
-      "relevance": "Ganztägiges Games-&-Tech-Festival mit Konferenzprogramm, praxisnahen Workshops und Branchen-Networking. Themen rund um Strategie, Führung und Wachstum sind besonders relevant für den Aufbau eines ernsthaften Indie-Projekts oder Studios.",
-      "registration": "Tickets sind erhältlich. Beim Kauf von mindestens zwei Tickets zusammen mit einem cis-männlichen Ally gilt laut Veranstalter 25 % Ermäßigung. Genaues Programm und Uhrzeiten folgen.",
+      "relevance": "Ganztägiges Games-&-Tech-Festival mit konkreten Sessions zu Indie-Studiogründung, Pitching, Games-Förderung und Netzwerken in NRW, Fehlern regionaler Indie-Studios, Sounddesign als Produkt- und Marketingfaktor sowie Führung und Branchenentwicklung. Ergänzt durch praktische Workshops und Networking bis 20:00 Uhr.",
+      "registration": "Tickets über Eventbrite; Einlass und Registrierung ab 09:30 Uhr, Programm 10:00–18:00 Uhr, Networking 18:00–20:00 Uhr. Beim gemeinsamen Kauf von mindestens zwei Tickets mit einem cis-männlichen Ally gilt laut Veranstalter 25 % Ermäßigung; keine Ticketfrist genannt.",
       "deadline": null,
-      "source": "https://www.womenize.net/2026/11/03/womenize-nrw-chapter-tickets-are-now-on-sale/"
+      "source": "https://www.womenize.net/womenize-nrw-chapter-dec-7-2026-cologne/"
     },
     {
       "id": "dep-2026",
