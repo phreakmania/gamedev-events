@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-11-24",
+  "updatedAt": "2026-11-25",
   "events": [
     {
       "id": "gaze-games-summit-2026",
       "name": "Gaze & Games Summit 2026",
-      "start": "2026-11-27T00:00:00+01:00",
-      "end": null,
-      "venue": "XPERION Köln, Hohe Straße 46",
+      "start": "2026-11-27T12:00:00+01:00",
+      "end": "2026-11-27T19:00:00+01:00",
+      "venue": "XPERION Köln, Hohe Straße 46–50",
       "city": "Köln",
       "category": "Indie-Showcase & Workshops",
       "relevance": "Indie-Games-Ausstellung, Matchmaking und Networking sowie praxisnahe Panels und Workshops zu Spieleentwicklung, Games-Marketing, Launches, Creator Economy, Förderung, Finanzierung, Recht, Positionierung und Pitching. Bestätigt sind unter anderem Michaela Bartelt-Krantz, Esther Kerkhoff, Polo Türk, Serah Jung und Josefine Meier.",
-      "registration": "Tickets sind verfügbar. Mit dem Code CREATIVENRW100 gibt es ein begrenztes Kontingent kostenloser Tickets, solange der Vorrat reicht; Uhrzeit weiterhin nicht veröffentlicht.",
+      "registration": "Tickets über Luma; verfügbar sind reguläre Tickets, Supporter-Tickets mit Goodie Bag sowie Tickets für Studierende und Auszubildende. Mit dem Code CREATIVENRW100 gibt es ein begrenztes Kontingent kostenloser Tickets, solange der Vorrat reicht.",
       "deadline": null,
-      "source": "https://creative.nrw/news/summit-fuer-diversitaet-und-empowerment-in-der-games-und-kreativbranche/"
+      "source": "https://luma.com/99jehjl9"
     },
     {
       "id": "game-creators-2026-12",
